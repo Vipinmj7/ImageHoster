@@ -50,6 +50,9 @@ public class Image {
     //Since the mapping is Many to Many, a new table will be generated containing the two columns both referencing to the primary key of both the tables ('images', 'tags')
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Tag> tags = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "image")
+    private List<Comment> comments = new ArrayList<>();
+
 
     public Image() {
     }
@@ -121,6 +124,9 @@ public class Image {
 
     public List<Tag> getTags() {
         return tags;
+    }
+    public List<Comment> getComments() {
+        return comments;
     }
 
     public void setTags(List<Tag> tags) {
